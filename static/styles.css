@@ -1,0 +1,213 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+#game-container {
+    width: 400px;
+    height: 600px;
+    border: 2px solid #333;
+    position: relative;
+    overflow: hidden;
+    background-color: white;
+    margin-bottom: 20px;
+}
+
+.word {
+    position: absolute;
+    top: -30px;
+    font-size: 24px;
+}
+
+.word.current {
+    color: #0000FF; /* Blue color for the current word */
+    font-weight: bold;
+}
+
+#input {
+    width: 100%;
+    padding: 15px;
+    font-size: 24px; /* Increased font size */
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    text-align: center; /* Center the text */
+    border: 2px solid #333; /* Add a border */
+    outline: none; /* Remove the default focus outline */
+}
+
+#input::placeholder {
+    color: #999; /* Lighter color for placeholder text */
+    font-size: 18px; /* Slightly smaller font for placeholder */
+}
+
+#score, #level {
+    position: absolute;
+    top: 10px;
+    font-size: 18px;
+}
+
+#score {
+    right: 10px;
+}
+
+#level {
+    right: 100px; /* Move level to the right side */
+}
+
+#keyboard {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 600px;
+    background-color: #e0e0e0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.keyboard-row {
+    display: flex;
+    gap: 5px;
+}
+
+.key {
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.korean-letter {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.english-letter {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 12px;
+    color: #666;
+}
+
+.key.highlight {
+    background-color: #ffff00;
+}
+
+#keyboard .key.next-letter {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    border: 2px solid #45a049;
+}
+
+#keyboard .key.correct {
+    background-color: #90EE90;
+    color: black;
+    font-weight: bold;
+}
+
+#keyboard .key.incorrect {
+    background-color: #FFB6C1;
+    color: black;
+    font-weight: bold;
+}
+
+@keyframes success-flash {
+    0% { background-color: rgba(0, 255, 0, 0); }
+    50% { background-color: rgba(0, 255, 0, 0.3); }
+    100% { background-color: rgba(0, 255, 0, 0); }
+}
+
+.success-flash {
+    animation: success-flash 0.5s ease-out;
+}
+
+.floating-score {
+    position: absolute;
+    font-size: 24px;
+    color: #4CAF50;
+    font-weight: bold;
+    pointer-events: none;
+    animation: float-up 1s ease-out;
+    opacity: 0;
+}
+
+@keyframes float-up {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-50px); opacity: 0; }
+}
+
+#instructions {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #999;
+    font-size: 18px;
+    max-width: 80%;
+    transition: opacity 0.5s ease-out;
+}
+
+#level-up-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(76, 175, 80, 0.9);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 24px;
+    text-align: center;
+    z-index: 1000;
+    display: none;
+}
+
+@keyframes starburst {
+    0% {
+        transform: scale(0.5);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+.starburst {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, #ffff00 0%, #ff9900 25%, #ff6600 50%, transparent 75%);
+    animation: starburst 0.8s ease-out;
+    pointer-events: none;
+    top: -50%;
+    left: -50%;
+    border-radius: 50%;
+}

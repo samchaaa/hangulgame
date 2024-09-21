@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한글 타이핑 게임</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div id="game-container">
+        <div id="score">점수: <span id="score-value">0</span></div>
+        <div id="level">레벨: <span id="level-value">1</span></div>
+        <input type="text" id="input" placeholder="단어를 입력하세요 (Click here to type)">
+    </div>
+    <div id="instructions">Game starting! Activate your Hangul keyboard, click into the text box, and type words as they appear! You will level up each 5 points.</div>
+    <div id="keyboard">
+        <!-- Keyboard will be dynamically generated here -->
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='game.js') }}"></script>
+</body>
+</html>
